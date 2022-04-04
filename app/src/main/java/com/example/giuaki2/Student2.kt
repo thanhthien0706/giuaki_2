@@ -9,5 +9,4 @@ data class Student2(
     var resouerceUrl: String? = "",
     var name: String? = "",
     var population: String? = "",
-    var description: String? = "",
 ) : Serializable

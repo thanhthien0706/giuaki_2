@@ -45,7 +45,6 @@ class DetailActivity : AppCompatActivity() {
         imgDTinh = findViewById(R.id.img_d_student)
         tvNameDTinh = findViewById(R.id.tv_name_d_student)
         tvPopulationDTinh = findViewById(R.id.tv_population_d_student)
-        tvDescriptionDTinh = findViewById(R.id.tb_description_d_student)
         btnChangeImgTinh = findViewById(R.id.btn_change_img_student)
 
         btnChangeImgTinh.setOnClickListener {
@@ -56,7 +55,6 @@ class DetailActivity : AppCompatActivity() {
         Glide.with(this).load(studentData.resouerceUrl).into(imgDTinh)
         tvNameDTinh.setText(studentData.name)
         tvPopulationDTinh.setText(studentData.population)
-        tvDescriptionDTinh.setText(studentData.description)
 
     }
 

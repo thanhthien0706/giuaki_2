@@ -35,56 +35,49 @@ class MainActivity : AppCompatActivity() {
 //         setDataTinh()
 
 //        fb.setAllStudent(
-//            "tinh",
+//            "student",
 //            mutableListOf(
-//                Tinh2(
+//                Student2(
 //                    null,
-//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/khanh_hoa.jpg?alt=media&token=e48a36ae-5c87-49b1-b23f-09bbd9878804",
-//                    "Khánh Hòa",
-//                    "1.246.358",
-//                    "Tinh nay rat la dep"
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/student%2Fsv_1.jpeg?alt=media&token=0ba0bdaa-e91d-484f-8c34-ec619bd55cb4",
+//                    "Sinh vien 1",
+//                    "2002",
 //                ),
-//                Tinh2(
+//                Student2(
 //                    null,
-//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/hue.jpg?alt=media&token=abd1959c-83bc-4245-b236-f3f336883c00",
-//                    "Huế",
-//                    "1.137.045",
-//                    "Tinh nay rat la dep"
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/student%2Fsv_2.jpg?alt=media&token=fcb7b73f-cac4-4fa2-8e4b-c69a05ed9a47",
+//                    "Sinh vien 2",
+//                    "2002",
 //                ),
-//                Tinh2(
+//                Student2(
 //                    null,
-//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/ca_mau.jpg?alt=media&token=596f936c-86f7-46f3-a6a7-b5734e80a3fd",
-//                    "Cà Mau",
-//                    "1.191.999",
-//                    "Tinh nay rat la dep"
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/student%2Fsv_3.jpg?alt=media&token=4332c31d-46ac-4aa3-b7e2-3d8e29fe3c21",
+//                    "Sinh vien 3",
+//                    "2002",
 //                ),
-//                Tinh2(
+//                Student2(
 //                    null,
-//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/cao_bang.jpg?alt=media&token=f54c9b82-67cc-4259-8935-d8d81844d71f",
-//                    "Cao Bằng",
-//                    "1.246.358",
-//                    "Tinh nay rat la dep"
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/student%2Fsv_4.jpg?alt=media&token=34213709-8a67-44f3-9c24-89659a97ee93",
+//                    "Sinh vien 4",
+//                    "2002",
 //                ),
-//                Tinh2(
+//                Student2(
 //                    null,
-//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/ha_noi.jpg?alt=media&token=94e9a884-f67a-4891-8db3-bda85c93b01d",
-//                    "Hà Nội",
-//                    "1.246.358",
-//                    "Tinh nay rat la dep"
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/student%2Fsv_5.jpg?alt=media&token=bdd7793a-f4ab-455a-b01b-b7d8c6022f57",
+//                    "Sinh vien 5",
+//                    "2002",
 //                ),
-//                Tinh2(
+//                Student2(
 //                    null,
-//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/quang_tri.jpg?alt=media&token=0dcb1e81-34da-44c5-b1e4-f6f0835a4d11",
-//                    "Quảng Trị",
-//                    "1.246.358",
-//                    "Tinh nay rat la dep"
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/student%2Fsv_6.jpg?alt=media&token=26c1f03d-7794-4ab4-adf8-bb6b025ad63a",
+//                    "Sinh vien 6",
+//                    "2002",
 //                ),
-//                Tinh2(
+//                Student2(
 //                    null,
-//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/tp_hcm.jpg?alt=media&token=ebdd09b3-1029-478a-9dd1-d3c73563d070",
-//                    "Hồ Chí Minh",
-//                    "1.246.358",
-//                    "Tinh nay rat la dep"
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/student%2Fsv_7.jpeg?alt=media&token=4791ca34-f179-4934-ae1f-930510ff475b",
+//                    "Sinh vien 7",
+//                    "2002",
 //                ),
 //            )
 //        )
@@ -160,7 +153,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.item_about -> Toast.makeText(
                 this,
-                "Ứng dụng xem thông tin tỉnh",
+                "Ứng dụng xem thông tin student",
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -169,13 +162,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun setDataTinh() {
 
-        fb.getAllTinh("tinh").get().addOnSuccessListener {
+        fb.getAllTinh("student").get().addOnSuccessListener {
             for (item in it.children) {
                 var student2: Student2 = Student2()
                 val product = item.getValue(Student2::class.java)
                 student2.id = item.key
                 student2.resouerceUrl = product?.resouerceUrl.toString()
-                student2.description = product?.description.toString()
                 student2.name = product?.name.toString()
                 student2.population = product?.population.toString()
 
