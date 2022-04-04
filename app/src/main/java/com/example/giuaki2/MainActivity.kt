@@ -7,23 +7,20 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.RelativeLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
-import java.net.URL
 import kotlin.random.Random
-import kotlin.system.measureTimeMillis
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var rcvTinh: RecyclerView
     private lateinit var layoutMain: RelativeLayout
-    private lateinit var tinhAdapter: TinhAdapter
+    private lateinit var studentAdapter: StudentAdapter
 
-    private var listData = mutableListOf<Tinh2>()
+    private var listData = mutableListOf<Student2>()
 
     private val fb = Firebase()
     private val db = FirebaseDatabase.getInstance().getReference()
@@ -32,65 +29,65 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        rcvTinh = findViewById(R.id.rcv_tinh)
+        rcvTinh = findViewById(R.id.rcv_student)
         layoutMain = findViewById(R.id.layout_main)
 
 //         setDataTinh()
 
-        fb.setAllTinh(
-            "tinh",
-            mutableListOf(
-                Tinh2(
-                    null,
-                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/khanh_hoa.jpg?alt=media&token=e48a36ae-5c87-49b1-b23f-09bbd9878804",
-                    "Khánh Hòa",
-                    "1.246.358",
-                    "Tinh nay rat la dep"
-                ),
-                Tinh2(
-                    null,
-                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/hue.jpg?alt=media&token=abd1959c-83bc-4245-b236-f3f336883c00",
-                    "Huế",
-                    "1.137.045",
-                    "Tinh nay rat la dep"
-                ),
-                Tinh2(
-                    null,
-                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/ca_mau.jpg?alt=media&token=596f936c-86f7-46f3-a6a7-b5734e80a3fd",
-                    "Cà Mau",
-                    "1.191.999",
-                    "Tinh nay rat la dep"
-                ),
-                Tinh2(
-                    null,
-                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/cao_bang.jpg?alt=media&token=f54c9b82-67cc-4259-8935-d8d81844d71f",
-                    "Cao Bằng",
-                    "1.246.358",
-                    "Tinh nay rat la dep"
-                ),
-                Tinh2(
-                    null,
-                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/ha_noi.jpg?alt=media&token=94e9a884-f67a-4891-8db3-bda85c93b01d",
-                    "Hà Nội",
-                    "1.246.358",
-                    "Tinh nay rat la dep"
-                ),
-                Tinh2(
-                    null,
-                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/quang_tri.jpg?alt=media&token=0dcb1e81-34da-44c5-b1e4-f6f0835a4d11",
-                    "Quảng Trị",
-                    "1.246.358",
-                    "Tinh nay rat la dep"
-                ),
-                Tinh2(
-                    null,
-                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/tp_hcm.jpg?alt=media&token=ebdd09b3-1029-478a-9dd1-d3c73563d070",
-                    "Hồ Chí Minh",
-                    "1.246.358",
-                    "Tinh nay rat la dep"
-                ),
-            )
-        )
+//        fb.setAllStudent(
+//            "tinh",
+//            mutableListOf(
+//                Tinh2(
+//                    null,
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/khanh_hoa.jpg?alt=media&token=e48a36ae-5c87-49b1-b23f-09bbd9878804",
+//                    "Khánh Hòa",
+//                    "1.246.358",
+//                    "Tinh nay rat la dep"
+//                ),
+//                Tinh2(
+//                    null,
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/hue.jpg?alt=media&token=abd1959c-83bc-4245-b236-f3f336883c00",
+//                    "Huế",
+//                    "1.137.045",
+//                    "Tinh nay rat la dep"
+//                ),
+//                Tinh2(
+//                    null,
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/ca_mau.jpg?alt=media&token=596f936c-86f7-46f3-a6a7-b5734e80a3fd",
+//                    "Cà Mau",
+//                    "1.191.999",
+//                    "Tinh nay rat la dep"
+//                ),
+//                Tinh2(
+//                    null,
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/cao_bang.jpg?alt=media&token=f54c9b82-67cc-4259-8935-d8d81844d71f",
+//                    "Cao Bằng",
+//                    "1.246.358",
+//                    "Tinh nay rat la dep"
+//                ),
+//                Tinh2(
+//                    null,
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/ha_noi.jpg?alt=media&token=94e9a884-f67a-4891-8db3-bda85c93b01d",
+//                    "Hà Nội",
+//                    "1.246.358",
+//                    "Tinh nay rat la dep"
+//                ),
+//                Tinh2(
+//                    null,
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/quang_tri.jpg?alt=media&token=0dcb1e81-34da-44c5-b1e4-f6f0835a4d11",
+//                    "Quảng Trị",
+//                    "1.246.358",
+//                    "Tinh nay rat la dep"
+//                ),
+//                Tinh2(
+//                    null,
+//                    "https://firebasestorage.googleapis.com/v0/b/giua-ky-7d827.appspot.com/o/tp_hcm.jpg?alt=media&token=ebdd09b3-1029-478a-9dd1-d3c73563d070",
+//                    "Hồ Chí Minh",
+//                    "1.246.358",
+//                    "Tinh nay rat la dep"
+//                ),
+//            )
+//        )
 
         rcvTinh.layoutManager = LinearLayoutManager(this)
 
@@ -115,7 +112,7 @@ class MainActivity : AppCompatActivity() {
                     val tinh = listData[position]
                     db.child("tinh").child(tinh.id.toString()).removeValue().addOnSuccessListener {
                         listData.removeAt(position)
-                        tinhAdapter.notifyDataSetChanged()
+                        studentAdapter.notifyDataSetChanged()
 //                        setDataTinh()
                     }
 
@@ -139,7 +136,7 @@ class MainActivity : AppCompatActivity() {
         val status = bundle.get("status")
 
         if (status == 1) {
-            tinhAdapter.notifyDataSetChanged()
+            studentAdapter.notifyDataSetChanged()
         } else {
             return
         }
@@ -174,21 +171,21 @@ class MainActivity : AppCompatActivity() {
 
         fb.getAllTinh("tinh").get().addOnSuccessListener {
             for (item in it.children) {
-                var tinh2: Tinh2 = Tinh2()
-                val product = item.getValue(Tinh2::class.java)
-                tinh2.id = item.key
-                tinh2.resouerceUrl = product?.resouerceUrl.toString()
-                tinh2.description = product?.description.toString()
-                tinh2.name = product?.name.toString()
-                tinh2.population = product?.population.toString()
+                var student2: Student2 = Student2()
+                val product = item.getValue(Student2::class.java)
+                student2.id = item.key
+                student2.resouerceUrl = product?.resouerceUrl.toString()
+                student2.description = product?.description.toString()
+                student2.name = product?.name.toString()
+                student2.population = product?.population.toString()
 
 //                    if (product != null) {
-                listData.add(tinh2)
+                listData.add(student2)
 //                    }
             }
 
-            tinhAdapter = TinhAdapter(this@MainActivity, listData)
-            rcvTinh.adapter = tinhAdapter
+            studentAdapter = StudentAdapter(this@MainActivity, listData)
+            rcvTinh.adapter = studentAdapter
         }
     }
 }

@@ -4,7 +4,7 @@ import android.net.Uri
 import java.io.Serializable
 import java.net.URI
 
-data class Tinh2(
+data class Student2(
     var id: String? = null,
     var resouerceUrl: String? = "",
     var name: String? = "",

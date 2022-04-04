@@ -6,20 +6,14 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.google.android.gms.tasks.Task
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 
 class DetailActivity : AppCompatActivity() {
 
@@ -32,7 +26,7 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var filePath: Uri
 
-    private lateinit var tinhData: Tinh2
+    private lateinit var studentData: Student2
 
     private val fb = Firebase()
     private val db = FirebaseDatabase.getInstance().getReference()
@@ -46,23 +40,23 @@ class DetailActivity : AppCompatActivity() {
             return
         }
 
-        tinhData = bundle.get("object_tinh") as Tinh2
+        studentData = bundle.get("object_student") as Student2
 
-        imgDTinh = findViewById(R.id.img_d_tinh)
-        tvNameDTinh = findViewById(R.id.tv_name_d_tinh)
-        tvPopulationDTinh = findViewById(R.id.tv_population_d_tinh)
-        tvDescriptionDTinh = findViewById(R.id.tb_description_d_tinh)
-        btnChangeImgTinh = findViewById(R.id.btn_change_img_tinh)
+        imgDTinh = findViewById(R.id.img_d_student)
+        tvNameDTinh = findViewById(R.id.tv_name_d_student)
+        tvPopulationDTinh = findViewById(R.id.tv_population_d_student)
+        tvDescriptionDTinh = findViewById(R.id.tb_description_d_student)
+        btnChangeImgTinh = findViewById(R.id.btn_change_img_student)
 
         btnChangeImgTinh.setOnClickListener {
             xuLyDoiAnh()
         }
 
 
-        Glide.with(this).load(tinhData.resouerceUrl).into(imgDTinh)
-        tvNameDTinh.setText(tinhData.name)
-        tvPopulationDTinh.setText(tinhData.population)
-        tvDescriptionDTinh.setText(tinhData.description)
+        Glide.with(this).load(studentData.resouerceUrl).into(imgDTinh)
+        tvNameDTinh.setText(studentData.name)
+        tvPopulationDTinh.setText(studentData.population)
+        tvDescriptionDTinh.setText(studentData.description)
 
     }
 
@@ -83,7 +77,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun xuLyXoaItem() {
-        db.child("tinh").child(tinhData.id.toString()).removeValue().addOnSuccessListener {
+        db.child("tinh").child(studentData.id.toString()).removeValue().addOnSuccessListener {
             val intent: Intent = Intent(this, MainActivity::class.java)
             val bundle: Bundle = Bundle()
             bundle.putByte("status", 1)
@@ -128,7 +122,7 @@ class DetailActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val url = task.result
 
-                        db.child("tinh").child(tinhData.id.toString()).child("resouerceUrl")
+                        db.child("tinh").child(studentData.id.toString()).child("resouerceUrl")
                             .setValue(url.toString())
                             .addOnSuccessListener {
                                 Glide.with(this).load(url).into(imgDTinh)

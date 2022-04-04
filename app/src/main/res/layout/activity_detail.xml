@@ -7,7 +7,7 @@
     tools:context=".DetailActivity">
 
     <ImageView
-        android:id="@+id/img_d_tinh"
+        android:id="@+id/img_d_student"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:paddingBottom="20dp"
@@ -18,43 +18,43 @@
 
 
     <ImageButton
-        android:id="@+id/btn_change_img_tinh"
+        android:id="@+id/btn_change_img_student"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@android:color/transparent"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_d_tinh"
+        app:layout_constraintTop_toTopOf="@+id/img_d_student"
         app:srcCompat="@drawable/exchange"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/tv_name_d_tinh"
+        android:id="@+id/tv_name_d_student"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_d_tinh" />
+        app:layout_constraintTop_toBottomOf="@+id/img_d_student" />
 
     <TextView
-        android:id="@+id/tv_population_d_tinh"
+        android:id="@+id/tv_population_d_student"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_d_tinh" />
+        app:layout_constraintTop_toBottomOf="@+id/img_d_student" />
 
     <TextView
-        android:id="@+id/tb_description_d_tinh"
+        android:id="@+id/tb_description_d_student"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_d_tinh" />
+        app:layout_constraintTop_toBottomOf="@+id/img_d_student" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

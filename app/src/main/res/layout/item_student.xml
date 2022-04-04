@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/layout_item_tinh"
+    android:id="@+id/layout_item_student"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
@@ -43,7 +43,7 @@
         android:padding="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_tinh"
+            android:id="@+id/img_student"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/khanh_hoa" />
@@ -53,11 +53,11 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/img_tinh"
+            android:layout_toEndOf="@+id/img_student"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_name_tinh"
+                android:id="@+id/tv_name_student"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
